@@ -1,0 +1,101 @@
+public class Temas extends Fragment {
+
+    Toolbar toolbar;
+    TabLayout tabs;
+    ViewPager viewPager;
+
+    //String[] elementos = {"Autoayuda", "Aventura", "Biográfica", "Ciencia Ficción", "Cultura",
+    // "Deportes", "Economía", "Enciclopedia", "Erótica", "Ficción", "Hogar", "Infantil", "Investigación",
+    // "Manual", "Marketing", "Policial", "Politica", "Realidad", "Romántica", "Sociedad", "Terror",
+    // "Thriller", "Varios", "Viajes", "Otros Temas..."};
+
+    public Temas() {
+        // Required empty public constructor
+    }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View vista = inflater.inflate(R.layout.frag_temas_principal, container, false);
+
+        viewPager =  vista.findViewById(R.id.viewpager);
+        setupViewPager(viewPager);
+        // Set Tabs inside Toolbar
+        tabs =  vista.findViewById(R.id.result_tabs);
+        tabs.setupWithViewPager(viewPager);
+
+        return vista;
+
+    }
+
+    // Add Fragments to Tabs
+    private void setupViewPager(ViewPager viewPager) {
+
+
+        Adapter adapter = new Adapter(getChildFragmentManager());
+        adapter.addFragment(new Autoayuda(), "Autoayuda");
+        adapter.addFragment(new Aventura(), "Aventura");
+        adapter.addFragment(new Biografica(), "Biográfica");
+        adapter.addFragment(new CienciaFiccion(), "Ciencia Ficción");
+        adapter.addFragment(new Cultura(), "Cultura");
+        adapter.addFragment(new Deportes(), "Deportes");
+        adapter.addFragment(new Economia(), "Economía");
+        adapter.addFragment(new Enciclopedia(), "Enciclopedia");
+        adapter.addFragment(new Erotica(), "Erótica");
+        adapter.addFragment(new Ficcion(), "Ficción");
+        adapter.addFragment(new Hogar(), "Hogar");
+        adapter.addFragment(new Infantil(), "Infantil");
+        adapter.addFragment(new Investigacion(), "Investigación");
+        adapter.addFragment(new Manual(), "Manual");
+        adapter.addFragment(new Marketing(), "Marketing");
+        adapter.addFragment(new Policial(), "Policial");
+        adapter.addFragment(new Politica(), "Politica");
+        adapter.addFragment(new Realidad(), "Realidad");
+        adapter.addFragment(new Romantica(), "Romántica");
+        adapter.addFragment(new Sociedad(), "Sociedad");
+        adapter.addFragment(new Terror(), "Terror");
+        adapter.addFragment(new Thriller(), "Thriller");
+        adapter.addFragment(new Varios(), "Varios");
+        adapter.addFragment(new Viajes(), "Viajes");
+        adapter.addFragment(new OtrosTemas(), "Otros Temas...");
+        viewPager.setAdapter(adapter);
+    }
+
+    static class Adapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+
+        public Adapter(FragmentManager manager) {
+            super(manager);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
+    }
+
+
+
+}
+

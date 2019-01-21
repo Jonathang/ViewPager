@@ -4,11 +4,7 @@ public class Temas extends Fragment {
     TabLayout tabs;
     ViewPager viewPager;
 
-    //String[] elementos = {"Autoayuda", "Aventura", "Biográfica", "Ciencia Ficción", "Cultura",
-    // "Deportes", "Economía", "Enciclopedia", "Erótica", "Ficción", "Hogar", "Infantil", "Investigación",
-    // "Manual", "Marketing", "Policial", "Politica", "Realidad", "Romántica", "Sociedad", "Terror",
-    // "Thriller", "Varios", "Viajes", "Otros Temas..."};
-
+  
     public Temas() {
         // Required empty public constructor
     }
